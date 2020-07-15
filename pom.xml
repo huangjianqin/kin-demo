@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.kin</groupId>
+    <artifactId>kin-demo</artifactId>
+    <version>0.1.0.0</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <CodeCacheSize>512m</CodeCacheSize>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.home>/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home</java.home>
+
+        <scala.version>2.12.10</scala.version>
+        <scala.version.head>2.12</scala.version.head>
+        <kin-framework.version>0.1.0.0</kin-framework.version>
+        <kin-framework-web.version>0.1.0.0</kin-framework-web.version>
+
+        <springboot.version>2.1.6.RELEASE</springboot.version>
+        <mybatis-spring-boot-starter.version>2.1.1</mybatis-spring-boot-starter.version>
+        <mysql-connector-java.version>8.0.19</mysql-connector-java.version>
+        <druid.version>1.1.9</druid.version>
+        <jackson.version>2.10.1</jackson.version>
+        <akka.version>2.6.4</akka.version>
+        <akka.http.version>10.1.11</akka.http.version>
+        <reactivemongo.version>0.20.3</reactivemongo.version>
+        <mongo-scala-driver.version>4.0.1</mongo-scala-driver.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>${springboot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.kin</groupId>
+            <artifactId>kin-framework-web</artifactId>
+            <version>${kin-framework-web.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.kin</groupId>
+            <artifactId>kin-framework</artifactId>
+            <version>${kin-framework.version}</version>
+        </dependency>
+
+        <!-- scala 相关-->
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>${scala.version}</version>
+        </dependency>
+
+        <!--scala mongo-->
+        <dependency>
+            <groupId>org.reactivemongo</groupId>
+            <artifactId>reactivemongo_${scala.version.head}</artifactId>
+            <version>${reactivemongo.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mongodb.scala</groupId>
+            <artifactId>mongo-scala-driver_${scala.version.head}</artifactId>
+            <version>${mongo-scala-driver.version}</version>
+        </dependency>
+
+        <!-- akka core-->
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-actor-typed_${scala.version.head}</artifactId>
+            <version>${akka.version}</version>
+        </dependency>
+
+        <!-- 管理actor集群-->
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-cluster-typed_${scala.version.head}</artifactId>
+            <version>${akka.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-stream_${scala.version.head}</artifactId>
+            <version>${akka.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-http_${scala.version.head}</artifactId>
+            <version>${akka.http.version}</version>
+        </dependency>
+        <!-- scala 相关end-->
+
+        <!-- spring 相关-->
+        <!-- starter-web：spring-webmvc + autoconfigure + logback + yaml + tomcat -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- mybatis-starter：mybatis + mybatis-spring + tomcat-jdbc（default） -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>${mybatis-spring-boot-starter.version}</version>
+        </dependency>
+
+        <!-- mysql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
+        </dependency>
+
+        <!-- alibaba的druid数据库连接池 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>${druid.version}</version>
+        </dependency>
+
+        <!-- jackson-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <!-- spring 相关end-->
+    </dependencies>
+
+
+    <build>
+        <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+        <testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>${basedir}/src/test/resources</directory>
+            </testResource>
+        </testResources>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${springboot.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>UTF-8</encoding>
+                    <maxmem>1024m</maxmem>
+                    <!--<fork>true</fork>-->
+                    <compilerArguments>
+                        <!--<verbose/>-->
+                    </compilerArguments>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <!--                    <execution>-->
+                    <!--                        <id>copy-dependencies</id>-->
+                    <!--                        <goals>-->
+                    <!--                            <goal>copy-dependencies</goal>-->
+                    <!--                        </goals>-->
+                    <!--                        <configuration>-->
+                    <!--                            <outputDirectory>${project.build.directory}/lib</outputDirectory>-->
+                    <!--                        </configuration>-->
+                    <!--                    </execution>-->
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+                <executions>
+                    <!--                    <execution>-->
+                    <!--                        <goals>-->
+                    <!--                            <goal>test-jar</goal>-->
+                    <!--                        </goals>-->
+                    <!--                    </execution>-->
+                </executions>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <!--                            <addClasspath>true</addClasspath>-->
+                            <!--                            <classpathPrefix>lib/</classpathPrefix>-->
+                            <!--<mainClass>spark.demo.run.Service</mainClass>-->
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.5.5</version>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <!--                            <addClasspath>true</addClasspath>-->
+                            <!--                            <classpathPrefix>lib/</classpathPrefix>-->
+                            <!--<mainClass></mainClass>-->
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                            <goal>test-jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <attach>false</attach>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
