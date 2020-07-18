@@ -1,5 +1,6 @@
 package org.kin.demo.spring.cloud.reference;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,8 +17,19 @@ public class ReferenceController {
     @Resource
     private RestTemplate restTemplate;
 
+
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String hello(){
-        return restTemplate.getForEntity("http://KIN-DEMO/hello", String.class).getBody();
+        return restTemplate.getForEntity("http://KIN-SERVICE1/hello", String.class).getBody();
+    }
+
+    @HystrixCommand(fallbackMethod = "fallback")
+    @RequestMapping(value = "/helloHystrix", method = RequestMethod.GET)
+    public String helloHystrix() {
+        return restTemplate.getForEntity("http://KIN-SERVICE1/helloHystrix", String.class).getBody();
+    }
+
+    public String fallback() {
+        return "error";
     }
 }
