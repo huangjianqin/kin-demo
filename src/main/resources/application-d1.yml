@@ -63,11 +63,11 @@ spring:
 # actuator
 management:
   server:
-    port: 8002
+    port: 8001
   endpoints:
     web:
       # 默认是 /actuator
-      base-path: /monitor
+      #      base-path: /monitor
       exposure:
         # 开放所有页面节点  默认只开启了health、info两个节点
         include: "*"
@@ -86,5 +86,9 @@ eureka:
     hostname: diamond1
   client:
     service-url:
-      defaultZone: "http://localhost:8101/eureka"
+      defaultZone: "http://localhost:8002/eureka"
 
+turbine:
+  # 监控的app唯一标识, 同时actuator也是使用默认的前缀/actuator, 因为turbine不支持自定义前缀改变的actuator
+  app-config: kin-reference1
+  cluster-name-expression: new String("default")

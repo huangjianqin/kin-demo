@@ -1,5 +1,5 @@
 server:
-  port: 8301
+  port: 8005
   tomcat:
     max-threads: 0
     uri-encoding: UTF-8
@@ -63,11 +63,11 @@ spring:
 # actuator
 management:
   server:
-    port: 8302
+    port: 8005
   endpoints:
     web:
       # 默认是 /actuator
-      base-path: /monitor
+      #      base-path: /monitor
       exposure:
         # 开放所有页面节点  默认只开启了health、info两个节点
         include: "*"
@@ -84,4 +84,4 @@ management:
 eureka:
   client:
     service-url:
-      defaultZone: "http://localhost:8001/eureka,http://localhost:8101/eureka"
+      defaultZone: "http://localhost:8001/eureka,http://localhost:8002/eureka"
