@@ -89,5 +89,5 @@ eureka:
       defaultZone: "http://localhost:8001/eureka"
 
 turbine:
-  app-config: kin-reference1
+  app-config: kin-reference1,kin-reference2
   cluster-name-expression: new String("default")

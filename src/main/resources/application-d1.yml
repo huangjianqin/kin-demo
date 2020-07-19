@@ -90,5 +90,5 @@ eureka:
 
 turbine:
   # 监控的app唯一标识, 同时actuator也是使用默认的前缀/actuator, 因为turbine不支持自定义前缀改变的actuator
-  app-config: kin-reference1
+  app-config: kin-reference1,kin-reference2
   cluster-name-expression: new String("default")

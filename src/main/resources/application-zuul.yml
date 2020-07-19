@@ -1,12 +1,12 @@
 server:
-  port: 8006
+  port: 8007
   tomcat:
     max-threads: 0
     uri-encoding: UTF-8
 
 spring:
   application:
-    name: kin-reference2
+    name: kin-zuul
 #  http:
 #    encoding.charset: UTF-8
 #    encoding.force: true
@@ -63,7 +63,7 @@ spring:
 # actuator
 management:
   server:
-    port: 8006
+    port: 8007
   endpoints:
     web:
       # 默认是 /actuator
@@ -82,15 +82,33 @@ management:
 
 # eureka
 eureka:
+  instance:
+    hostname: kin-zuul
   client:
     service-url:
       defaultZone: "http://localhost:8001/eureka,http://localhost:8002/eureka"
+
+zuul:
+  ignored-services: kin-reference1
+#  routes:
+#    ribbon:
+#      path: /ribbon/**
+#      serviceId: kin-reference1
+#    feign:
+#      path: /feign/**
+#      serviceId: kin-reference2
+#   更简洁的方式
+#    kin-reference1:
+#      /ribbon/**
+#    kin-reference2:
+#      /feign/**
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 500
 ribbon:
   ConnectTimeout: 5000
   ReadTimeout: 1500
-#  OkToRetryOnAllOperations: true
-#  MaxAutoRetriesNextServer: 3
-#  MaxAutoRetries: 1
-feign:
-  hystrix:
-    enabled: true

@@ -18,13 +18,13 @@ public class ReferenceController {
     private RestTemplate restTemplate;
 
 
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    @RequestMapping(value = "/ribbonHello", method = RequestMethod.GET)
     public String hello(){
         return restTemplate.getForEntity("http://KIN-SERVICE1/hello", String.class).getBody();
     }
 
     @HystrixCommand(fallbackMethod = "fallback")
-    @RequestMapping(value = "/helloHystrix", method = RequestMethod.GET)
+    @RequestMapping(value = "/ribbonHelloHystrix", method = RequestMethod.GET)
     public String helloHystrix() {
         return restTemplate.getForEntity("http://KIN-SERVICE1/helloHystrix", String.class).getBody();
     }
