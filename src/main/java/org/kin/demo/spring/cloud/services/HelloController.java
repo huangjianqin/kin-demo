@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -37,5 +38,10 @@ public class HelloController {
                 .append(sleepTime);
 
         return sb.toString();
+    }
+
+    @RequestMapping(value = "/hello1", method = RequestMethod.GET)
+    public String hello1(@RequestParam String name) {
+        return name + "---" + StringUtils.mkString(discoveryClient.getServices());
     }
 }
