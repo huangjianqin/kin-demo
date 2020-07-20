@@ -1,0 +1,43 @@
+server:
+  port: 8004
+
+# actuator
+management:
+  server:
+    port: ${server.port}
+  endpoints:
+    web:
+      # 默认是 /actuator
+      #      base-path: /monitor
+      exposure:
+        # 开放所有页面节点  默认只开启了health、info两个节点
+        include: "*"
+  endpoint:
+    health:
+      # 显示健康具体信息  默认不会显示详细信息
+      show-details: always
+
+zuul:
+  ignored-services: ribbon-consumer
+#  routes:
+#    ribbon:
+#      path: /ribbon/**
+#      serviceId: kin-reference1
+#    feign:
+#      path: /feign/**
+#      serviceId: kin-reference2
+#   更简洁的方式
+#    kin-reference1:
+#      /ribbon/**
+#    kin-reference2:
+#      /feign/**
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 500
+ribbon:
+  ConnectTimeout: 5000
+  ReadTimeout: 1500
