@@ -1,2 +1,26 @@
-application:
-  name: kin-demo
+# 启动不需要配置中心的app先屏蔽一下
+spring:
+  profiles:
+    active: service1
+  application:
+    name: service1
+  cloud:
+    config:
+      #      uri: http://localhost:8008/
+      profile: dev
+      discovery:
+        enabled: true
+        service-id: KIN-CONFIG
+      #     失败快速响应
+      fail-fast: true
+      retry:
+        initial-interval: 5000
+        max-interval: 6000
+eureka:
+  client:
+    service-url:
+      defaultZone: "http://localhost:8001/eureka,http://localhost:8002/eureka"
+
+# 配置中心配置, 为了能正常启动
+a: NaN
+b: NaN

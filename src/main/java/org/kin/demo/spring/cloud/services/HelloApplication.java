@@ -8,8 +8,8 @@ import org.springframework.cloud.client.SpringCloudApplication;
  * @date 2020-07-16
  */
 @SpringCloudApplication
-public class HelloApplicationn {
+public class HelloApplication {
     public static void main(String[] args) {
-        SpringApplication.run(HelloApplicationn.class, args);
+        SpringApplication.run(HelloApplication.class);
     }
 }
