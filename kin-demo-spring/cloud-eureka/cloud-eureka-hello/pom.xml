@@ -29,6 +29,12 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
         <!-- 支持重试end -->
+
+        <!-- 实现配置动态刷新 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bus-kafka</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

@@ -1,4 +1,10 @@
 spring:
+  #  架构: 配置中心与服务同时连上kafka, 然后刷新配置中心, 进而刷新全部服务配置, 提高运维效率
+  #  需要配置actuator, 同时post /actuator/bus-refresh动态刷新所有配置
+  kafka:
+    bootstrap-servers: "bigdata1:9092"
+  #    consumer:
+  #      group-id: springcloudbus
   cloud:
     config:
       server:
@@ -10,3 +16,18 @@ spring:
         native:
           search-locations: /Users/hjq/jvmapps/kin-demo/config
 
+# actuator
+management:
+  server:
+    port: ${server.port}
+  endpoints:
+    web:
+      # 默认是 /actuator
+      #      base-path: /monitor
+      exposure:
+        # 开放所有页面节点  默认只开启了health、info两个节点
+        include: "*"
+  endpoint:
+    health:
+      # 显示健康具体信息  默认不会显示详细信息
+      show-details: always
