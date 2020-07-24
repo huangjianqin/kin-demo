@@ -1,4 +1,4 @@
-package org.kin.demo.spring.ribbon;
+package org.kin.demo.spring.cloud.ribbon;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;

@@ -1,4 +1,4 @@
-package org.kin.demo.spring.eureka.services;
+package org.kin.demo.spring.cloud.eureka.services;
 
 import org.kin.framework.utils.StringUtils;
 import org.slf4j.Logger;

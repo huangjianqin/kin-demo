@@ -1,4 +1,4 @@
-package org.kin.demo.spring.zuul;
+package org.kin.demo.spring.cloud.zuul;
 
 import org.springframework.boot.web.error.ErrorAttributeOptions;
 import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;

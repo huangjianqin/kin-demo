@@ -1,4 +1,4 @@
-package org.kin.demo.spring.zuul;
+package org.kin.demo.spring.cloud.zuul;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;

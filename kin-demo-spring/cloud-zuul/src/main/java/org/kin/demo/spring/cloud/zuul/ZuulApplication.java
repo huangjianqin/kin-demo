@@ -1,17 +1,17 @@
-package org.kin.demo.spring.feign;
+package org.kin.demo.spring.cloud.zuul;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
-import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 /**
  * @author huangjianqin
  * @date 2020-07-19
  */
-@EnableFeignClients
+@EnableZuulProxy
 @SpringCloudApplication
-public class FeignConsumerApp {
+public class ZuulApplication {
     public static void main(String[] args) {
-        SpringApplication.run(FeignConsumerApp.class, args);
+        SpringApplication.run(ZuulApplication.class, args);
     }
 }

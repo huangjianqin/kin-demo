@@ -1,4 +1,4 @@
-package org.kin.demo.spring.ribbon;
+package org.kin.demo.spring.cloud.ribbon;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.web.bind.annotation.RequestMapping;

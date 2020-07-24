@@ -1,4 +1,4 @@
-package org.kin.demo.spring.zuul.filter;
+package org.kin.demo.spring.cloud.zuul.filter;
 
 import com.netflix.zuul.FilterProcessor;
 import com.netflix.zuul.ZuulFilter;

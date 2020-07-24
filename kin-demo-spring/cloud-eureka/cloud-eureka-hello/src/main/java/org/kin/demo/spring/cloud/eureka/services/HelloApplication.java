@@ -1,4 +1,4 @@
-package org.kin.demo.spring.eureka.services;
+package org.kin.demo.spring.cloud.eureka.services;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
