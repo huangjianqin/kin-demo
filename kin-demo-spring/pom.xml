@@ -17,6 +17,7 @@
         <module>cloud-feign</module>
         <module>cloud-zuul</module>
         <module>cloud-config</module>
+        <module>cloud-stream</module>
     </modules>
 
     <dependencyManagement>

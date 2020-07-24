@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: "bigdata1:9092"
+      binders:
+        springcloudbus:
+          destination:
+            springcloudbus
+        springcloudstream:
+          destination:
+            springcloudbus
