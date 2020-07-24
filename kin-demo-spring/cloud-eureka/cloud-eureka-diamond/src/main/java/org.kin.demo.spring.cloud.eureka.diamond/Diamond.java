@@ -1,4 +1,4 @@
-package org.kin.demo.spring.eureka.diamond;
+package org.kin.demo.spring.cloud.eureka.diamond;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
