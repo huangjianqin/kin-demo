@@ -29,7 +29,7 @@ public class HelloController {
     private String d;
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public String hello(){
+    public String hello() {
         return StringUtils.mkString(discoveryClient.getServices());
     }
 
