@@ -18,6 +18,7 @@
         <module>cloud-zuul</module>
         <module>cloud-config</module>
         <module>cloud-stream</module>
+        <module>cloud-gateway</module>
     </modules>
 
     <dependencyManagement>
