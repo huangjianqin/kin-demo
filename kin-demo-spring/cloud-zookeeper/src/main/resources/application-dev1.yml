@@ -1,0 +1,9 @@
+server:
+  port: 8011
+spring:
+  application:
+    name: hello-service-client
+
+feign:
+  hystrix:
+    enabled: true

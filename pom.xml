@@ -37,6 +37,7 @@
         <akka.http.version>10.1.11</akka.http.version>
         <reactivemongo.version>0.20.3</reactivemongo.version>
         <mongo-scala-driver.version>4.0.1</mongo-scala-driver.version>
+        <zookeeper.version>3.4.9</zookeeper.version>
     </properties>
 
     <dependencies>

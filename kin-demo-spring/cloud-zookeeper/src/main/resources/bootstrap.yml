@@ -1,0 +1,4 @@
+spring:
+  cloud:
+    zookeeper:
+      connect-string: bigdata1:2181

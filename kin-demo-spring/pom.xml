@@ -19,6 +19,7 @@
         <module>cloud-config</module>
         <module>cloud-stream</module>
         <module>cloud-gateway</module>
+        <module>cloud-zookeeper</module>
     </modules>
 
     <dependencyManagement>
