@@ -1,5 +1,9 @@
 package org.kin.demo.spring.cloud.eureka.services;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import org.kin.framework.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +26,9 @@ public class HelloController {
 
     @Resource
     private DiscoveryClient discoveryClient;
+
+    @Resource
+    private UserMapper userMapper;
 
     @Value("${a}")
     private String b;
@@ -53,5 +60,14 @@ public class HelloController {
     @GetMapping(value = "/config")
     public String config() {
         return b + d;
+    }
+
+    @GetMapping("/user/findAll")
+    public String findUser() {
+        LambdaQueryWrapper<User> wrapper =
+                Wrappers.lambdaQuery(User.class)
+                        .gt(User::getPassword, "50");
+        Page<User> page = PageHelper.startPage(1, 10).doSelectPage(() -> userMapper.selectList(wrapper));
+        return StringUtils.mkString(System.lineSeparator(), page.getResult());
     }
 }

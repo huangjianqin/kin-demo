@@ -38,6 +38,11 @@
         <reactivemongo.version>0.20.3</reactivemongo.version>
         <mongo-scala-driver.version>4.0.1</mongo-scala-driver.version>
         <zookeeper.version>3.5.8</zookeeper.version>
+        <mybatis-spring-boot-starter.version>1.2.1</mybatis-spring-boot-starter.version>
+        <pagehelper-spring-boot-starter.version>1.2.3</pagehelper-spring-boot-starter.version>
+        <mybatis-plus-boot-starter.version>3.4.0</mybatis-plus-boot-starter.version>
+        <mysql-connector-java.version>8.0.19</mysql-connector-java.version>
+        <druid.version>1.1.9</druid.version>
     </properties>
 
     <dependencies>
