@@ -12,6 +12,19 @@
     <artifactId>kin-demo-java</artifactId>
     <packaging>jar</packaging>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.projectreactor</groupId>
+                <!-- bom, maven的一个特性, 用于解决依赖冲突, 由依赖提供者维护版本依赖, 使用者不需要再指定版本-->
+                <artifactId>reactor-bom</artifactId>
+                <version>Bismuth-RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.freemarker</groupId>
@@ -22,6 +35,10 @@
             <groupId>com.thoughtworks.qdox</groupId>
             <artifactId>qdox</artifactId>
             <version>2.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-core</artifactId>
         </dependency>
     </dependencies>
 </project>
