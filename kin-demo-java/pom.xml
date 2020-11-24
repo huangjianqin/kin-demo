@@ -18,10 +18,11 @@
                 <groupId>io.projectreactor</groupId>
                 <!-- bom, maven的一个特性, 用于解决依赖冲突, 由依赖提供者维护版本依赖, 使用者不需要再指定版本-->
                 <artifactId>reactor-bom</artifactId>
-                <version>Bismuth-RELEASE</version>
+                <version>2020.0.1</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -39,6 +40,14 @@
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor.netty</groupId>
+            <artifactId>reactor-netty-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor.netty</groupId>
+            <artifactId>reactor-netty-http</artifactId>
         </dependency>
     </dependencies>
 </project>
