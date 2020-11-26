@@ -47,6 +47,16 @@ spring:
     serialization:
       indent_output: true
 
+  # spring session
+  session:
+    store-type: redis
+    flush-mode: on_save
+    namespace: spring:session
+  # redis配置
+  redis:
+    host: 0.0.0.0
+    port: 6379
+
 # mybatis
 mybatis:
   mapper-locations: classpath:/mapper/*Mapper.xml

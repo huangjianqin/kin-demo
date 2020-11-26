@@ -43,6 +43,7 @@
         <mybatis-plus-boot-starter.version>3.4.0</mybatis-plus-boot-starter.version>
         <mysql-connector-java.version>8.0.19</mysql-connector-java.version>
         <druid.version>1.1.9</druid.version>
+        <lettuce.version>5.3.3.RELEASE</lettuce.version>
     </properties>
 
     <dependencies>

@@ -13,6 +13,7 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -69,5 +70,12 @@ public class HelloController {
                         .gt(User::getPassword, "50");
         Page<User> page = PageHelper.startPage(1, 10).doSelectPage(() -> userMapper.selectList(wrapper));
         return StringUtils.mkString(System.lineSeparator(), page.getResult());
+    }
+
+    @GetMapping("/session")
+    public String session(HttpServletRequest request) {
+        String key = "session";
+//        request.getSession().setAttribute(key, 100);
+        return request.getSession().getAttribute(key).toString();
     }
 }
