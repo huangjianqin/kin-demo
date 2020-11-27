@@ -1,0 +1,10 @@
+server:
+  port: 8014
+
+spring:
+  kafka:
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        # 映射json class
+        spring.json.type.mapping: c1:org.kin.demo.spring.kafka.common.C1,c2:org.kin.demo.spring.kafka.common.C2
