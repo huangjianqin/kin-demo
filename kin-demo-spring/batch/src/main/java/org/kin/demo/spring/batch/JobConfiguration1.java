@@ -14,6 +14,10 @@ import org.springframework.batch.item.ExecutionContext;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
+import org.springframework.batch.item.database.JdbcBatchItemWriter;
+import org.springframework.batch.item.database.JdbcCursorItemReader;
+import org.springframework.batch.item.database.builder.JdbcBatchItemWriterBuilder;
+import org.springframework.batch.item.database.builder.JdbcCursorItemReaderBuilder;
 import org.springframework.batch.item.file.FlatFileItemWriter;
 import org.springframework.batch.item.file.builder.FlatFileItemWriterBuilder;
 import org.springframework.batch.item.file.transform.PassThroughLineAggregator;
@@ -24,9 +28,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 
+import javax.sql.DataSource;
 import java.util.*;
 
 /**
@@ -44,8 +50,11 @@ public class JobConfiguration1 {
     private JobBuilderFactory jobBuilderFactory;
     @Autowired
     private StepBuilderFactory stepBuilderFactory;
+    @Autowired
+    @Lazy
+    private DataSource dataSource;
 
-    @Bean
+    //    @Bean
     public Job job() {
         ListItemReader<Integer> reader = new ListItemReader<>(Arrays.asList(1, 2, 3, 4, 5));
         FlatFileItemWriter<Integer> writer = new FlatFileItemWriterBuilder<Integer>()
@@ -72,7 +81,7 @@ public class JobConfiguration1 {
         return jobBuilderFactory.get("job1").start(step1).build();
     }
 
-    @Bean
+    //    @Bean
     public Job partitionJob() {
         Step step2 = stepBuilderFactory.get("step2")
                 .partitioner("step3", new Partitioner() {
@@ -136,6 +145,101 @@ public class JobConfiguration1 {
             sources.add(i);
         }
         return new ListItemReader<>(sources);
+    }
+
+    //    @Bean
+    public Job jdbcWriteJob() {
+        //模拟分区数据返回
+        int limit = 1000;
+        List<Integer> sources = new ArrayList<>(limit);
+        for (int i = 0; i < limit; i++) {
+            sources.add(i);
+        }
+        ListItemReader<Integer> reader = new ListItemReader<>(sources);
+
+        JdbcBatchItemWriter<Integer> writer = new JdbcBatchItemWriterBuilder<Integer>()
+                .dataSource(dataSource)
+                .sql("INSERT INTO batch values (?, ?)")
+                //必须有
+                .itemPreparedStatementSetter((item, ps) -> {
+                    ps.setInt(1, item);
+                    ps.setInt(2, 100000 + item);
+                })
+                .build();
+
+        TaskletStep step1 = stepBuilderFactory.get("step4")
+                //commit num
+                .<Integer, Integer>chunk(10)
+                .reader(reader)
+                .writer(writer)
+                .build();
+        return jobBuilderFactory.get("jdbcWriteJob").start(step1).build();
+    }
+
+    @Bean
+    public Job jdbcPartitionJob() {
+        Step step5 = stepBuilderFactory.get("step5")
+                .partitioner("step6", new Partitioner() {
+                    @Override
+                    public Map<String, ExecutionContext> partition(int gridSize) {
+                        //自定义分区逻辑
+                        Map<String, ExecutionContext> result = new HashMap<>(gridSize);
+                        int range = 1000 / gridSize;
+                        for (int i = 0; i < gridSize; i++) {
+                            ExecutionContext executionContext = new ExecutionContext();
+                            executionContext.putInt("fromId", i * range);
+                            executionContext.putInt("toId", (i + 1) * range);
+                            executionContext.putInt("partition", i);
+
+                            result.put("partition" + i, executionContext);
+                        }
+                        return result;
+                    }
+                })
+                .step(jdbcPartitionStep())
+                .gridSize(5)
+                .build();
+        return jobBuilderFactory.get("jdbcPartitionJob").start(step5).build();
+    }
+
+    @Bean
+    public Step jdbcPartitionStep() {
+        return stepBuilderFactory.get("step6")
+                //commit num
+                .<Integer, Integer>chunk(33)
+                .reader(jdbcPartitionReader(0, 0))
+                .writer(jdbcPartitionWriter(0))
+                .build();
+    }
+
+    @Bean
+    @StepScope
+    public ItemWriter<Integer> jdbcPartitionWriter(@Value("#{stepExecutionContext[partition]}") final int partition) {
+        return new JdbcBatchItemWriterBuilder<Integer>()
+                .dataSource(dataSource)
+                .sql("INSERT INTO batch_out values (?, ?)")
+                //必须有
+                .itemPreparedStatementSetter((item, ps) -> {
+                    ps.setInt(1, partition);
+                    ps.setInt(2, item);
+                })
+                .build();
+    }
+
+    @Bean
+    @StepScope
+    public ItemReader<Integer> jdbcPartitionReader(@Value("#{stepExecutionContext[fromId]}") final int fromId,
+                                                   @Value("#{stepExecutionContext[toId]}") final int toId) {
+        JdbcCursorItemReader<Integer> reader = new JdbcCursorItemReaderBuilder<Integer>()
+                .name("jdbcReader" + fromId)
+                .dataSource(dataSource)
+                .sql("select sum(num) as s from batch where ? <= id and id <= ?")
+                .rowMapper((resultSet, i) -> resultSet.getInt(1))
+                .queryArguments(fromId, toId)
+                .build();
+        //!!!!! bug, 通过@StepScope 注入, JdbcCursorItemReader不会调用open()方法, 这个硬调用
+        reader.open(new ExecutionContext());
+        return reader;
     }
 
     public static void main(String[] args) throws InterruptedException {
