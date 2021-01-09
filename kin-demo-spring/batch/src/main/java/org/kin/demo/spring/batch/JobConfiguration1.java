@@ -176,7 +176,7 @@ public class JobConfiguration1 {
         return jobBuilderFactory.get("jdbcWriteJob").start(step1).build();
     }
 
-    @Bean
+//    @Bean
     public Job jdbcPartitionJob() {
         Step step5 = stepBuilderFactory.get("step5")
                 .partitioner("step6", new Partitioner() {
