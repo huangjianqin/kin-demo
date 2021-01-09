@@ -218,7 +218,6 @@ public class JobConfiguration1 {
         return new JdbcBatchItemWriterBuilder<Integer>()
                 .dataSource(dataSource)
                 .sql("INSERT INTO batch_out values (?, ?)")
-                //必须有
                 .itemPreparedStatementSetter((item, ps) -> {
                     ps.setInt(1, partition);
                     ps.setInt(2, item);
