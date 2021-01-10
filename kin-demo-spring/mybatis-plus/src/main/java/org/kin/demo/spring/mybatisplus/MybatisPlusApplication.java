@@ -7,8 +7,8 @@ import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.plugins.pagination.dialects.MySqlDialect;
+import org.kin.demo.spring.mybatisplus.dao.UserDao;
 import org.kin.demo.spring.mybatisplus.entity.User;
-import org.kin.demo.spring.mybatisplus.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,7 +24,7 @@ import java.util.List;
 @SpringBootApplication
 public class MybatisPlusApplication {
     @Autowired
-    private UserMapper userMapper;
+    private UserDao userDao;
 
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor() {
@@ -41,6 +41,7 @@ public class MybatisPlusApplication {
         MybatisPlusApplication application = context.getBean(MybatisPlusApplication.class);
         application.demo1();
         application.demo2();
+        application.demo3();
 
         Thread.sleep(10 * 1000);
 
@@ -48,20 +49,25 @@ public class MybatisPlusApplication {
     }
 
     public void demo1() {
-        System.out.println(("----- selectAll method test ------"));
-        List<User> userList = userMapper.selectList(null);
+        System.out.println(("----- demo1 -> selectAll method test ------"));
+        List<User> userList = userDao.selectList(null);
         userList.forEach(System.out::println);
     }
 
     public void demo2() {
-        System.out.println(("----- condtition page query test ------"));
+        System.out.println(("----- demo2 -> condtition page query test ------"));
         QueryWrapper<User> c = new QueryWrapper<>();
         c.gt("age", 20);
         LambdaQueryWrapper<User> lc = c.lambda();
         lc.le(User::getAge, 25);
 
         Page<User> page = new Page<>(0, 1);
-        userMapper.selectPage(page, c);
+        userDao.selectPage(page, c);
         page.getRecords().forEach(System.out::println);
+    }
+
+    public void demo3() {
+        System.out.println(("----- demo3 -> condtition query test ------"));
+        System.out.println(userDao.getById(1));
     }
 }
