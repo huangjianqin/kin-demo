@@ -18,7 +18,7 @@
                 <groupId>io.projectreactor</groupId>
                 <!-- bom, maven的一个特性, 用于解决依赖冲突, 由依赖提供者维护版本依赖, 使用者不需要再指定版本-->
                 <artifactId>reactor-bom</artifactId>
-                <version>2020.0.1</version>
+                <version>${reactor.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -30,12 +30,12 @@
         <dependency>
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>
-            <version>2.3.30</version>
+            <version>${freemarker.version}</version>
         </dependency>
         <dependency>
             <groupId>com.thoughtworks.qdox</groupId>
             <artifactId>qdox</artifactId>
-            <version>2.0.0</version>
+            <version>${qdox.version}</version>
         </dependency>
         <dependency>
             <groupId>io.projectreactor</groupId>
