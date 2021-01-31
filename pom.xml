@@ -43,11 +43,12 @@
         <lettuce.version>5.3.3.RELEASE</lettuce.version>
         <mybatis-plus.version>3.4.1</mybatis-plus.version>
         <rabbitmq.version>5.10.0</rabbitmq.version>
-
-        <rabbitmq.version>5.10.0</rabbitmq.version>
         <freemarker.version>2.3.30</freemarker.version>
         <qdox.version>2.0.0</qdox.version>
-        <reactor.version>2020.0.1</reactor.version>
+        <rsocket-rpc.version>0.3.0</rsocket-rpc.version>
+        <reactor.version>Dysprosium-SR9</reactor.version>
+        <rsocket.version>1.1.0</rsocket.version>
+        <protobuf.version>3.12.0</protobuf.version>
     </properties>
 
     <dependencies>
@@ -78,18 +79,6 @@
 
 
     <build>
-        <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
-        <testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
-        <resources>
-            <resource>
-                <directory>${basedir}/src/main/resources</directory>
-            </resource>
-        </resources>
-        <testResources>
-            <testResource>
-                <directory>${basedir}/src/test/resources</directory>
-            </testResource>
-        </testResources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
