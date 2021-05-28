@@ -28,7 +28,8 @@
         <kin-framework.version>0.1.0.0</kin-framework.version>
         <kin-framework-web.version>0.1.0.0</kin-framework-web.version>
 
-        <springboot.version>2.3.1.RELEASE</springboot.version>
+        <spring-cloud-release.version>2020.0.2</spring-cloud-release.version>
+        <springboot.version>2.5.0</springboot.version>
         <mysql-connector-java.version>8.0.19</mysql-connector-java.version>
         <druid.version>1.1.9</druid.version>
         <jackson.version>2.10.1</jackson.version>
@@ -50,6 +51,26 @@
         <rsocket.version>1.1.0</rsocket.version>
         <protobuf.version>3.12.0</protobuf.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>${springboot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud-release.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>

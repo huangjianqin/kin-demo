@@ -13,9 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>cloud-eureka</module>
-        <module>cloud-ribbon</module>
         <module>cloud-feign</module>
-        <module>cloud-zuul</module>
         <module>cloud-config</module>
         <module>cloud-stream</module>
         <module>cloud-gateway</module>
@@ -24,26 +22,6 @@
         <module>batch</module>
         <module>mybatis-plus</module>
     </modules>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-parent</artifactId>
-                <version>${springboot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR6</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <dependencies>
         <!-- starter-web：spring-webmvc + autoconfigure + logback + yaml + tomcat -->
