@@ -2,8 +2,6 @@ server:
   port: 8003
 
 spring:
-  application:
-    name: helloservice
   cloud:
     nacos:
       discovery:

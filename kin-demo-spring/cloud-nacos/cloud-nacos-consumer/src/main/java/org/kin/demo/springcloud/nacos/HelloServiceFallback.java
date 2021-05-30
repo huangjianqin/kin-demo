@@ -12,4 +12,9 @@ public class HelloServiceFallback implements HelloService {
     public String hello() {
         return "local hello";
     }
+
+    @Override
+    public String config() {
+        return "local config";
+    }
 }

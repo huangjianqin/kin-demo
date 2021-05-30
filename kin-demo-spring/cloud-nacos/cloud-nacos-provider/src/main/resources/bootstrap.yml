@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: helloservice
+  #默认dataid=${cloud.nacos.config.prefix}-${spring.profiles.active}.${cloud.nacos.config.extension}
+  #${cloud.nacos.config.prefix}默认为是${spring.application.name}
+  #如果${spring.profiles.active}为空, 则-${spring.profiles.active}都会没有
+  #${cloud.nacos.config.extension}默认是properties
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848

@@ -19,4 +19,9 @@ public class NacosFeignController {
     public String hello() {
         return helloService.hello();
     }
+
+    @RequestMapping(value = "/config", method = RequestMethod.GET)
+    public String config() {
+        return helloService.config();
+    }
 }
