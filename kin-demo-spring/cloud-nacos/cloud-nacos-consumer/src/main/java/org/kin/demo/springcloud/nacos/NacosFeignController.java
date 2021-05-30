@@ -15,6 +15,28 @@ public class NacosFeignController {
     @Resource
     private HelloService helloService;
 
+//    @PostConstruct
+//    public void init(){
+//        String res = "GET:http://helloservice/config";
+//
+//        FlowRule rule1 = new FlowRule();
+//        rule1.setCount(1);
+//        rule1.setResource(res);
+//        rule1.setGrade(RuleConstant.FLOW_GRADE_QPS);
+//        rule1.setLimitApp("default");
+//
+//        FlowRuleManager.loadRules(Collections.singletonList(rule1));
+//
+//        DegradeRule rule2 = new DegradeRule();
+//        rule2.setResource(res);
+//        rule2.setCount(1);
+//        rule2.setGrade(RuleConstant.DEGRADE_GRADE_RT);
+//        rule2.setTimeWindow(1);
+//        rule2.setMinRequestAmount(1);
+//
+//        DegradeRuleManager.loadRules(Collections.singletonList(rule2));
+//    }
+
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String hello() {
         return helloService.hello();
