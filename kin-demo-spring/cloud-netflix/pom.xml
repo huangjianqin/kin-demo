@@ -9,25 +9,20 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cloud-config</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>cloud-netflix</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>cloud-eureka-diamond</module>
+        <module>cloud-eureka-hello</module>
+        <module>cloud-feign</module>
+        <module>cloud-config</module>
+    </modules>
+
     <dependencies>
-        <!-- 配置中心server不支持同时配置config service client, 好像不支持更改
-                    详情请看org.springframework.cloud.config.server.bootstrap.ConfigServerBootstrapApplicationListener -->
+        <!-- org.springframework.cloud.sleuth debug级别输出-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-server</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-        </dependency>
-
-        <!-- 实现配置动态刷新 -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-bus-kafka</artifactId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
         </dependency>
 
         <!-- spring cloud 2020移除了SpringCloudApplication, 则需要添加下面依赖才能读取bootstrap.xml -->
@@ -36,4 +31,5 @@
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
         </dependency>
     </dependencies>
+
 </project>

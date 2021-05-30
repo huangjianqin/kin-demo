@@ -12,8 +12,7 @@
     <artifactId>kin-demo-spring</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>cloud-eureka</module>
-        <module>cloud-config</module>
+        <module>cloud-netflix</module>
         <module>cloud-stream</module>
         <module>cloud-gateway</module>
         <module>cloud-zookeeper</module>
