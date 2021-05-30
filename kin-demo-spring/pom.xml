@@ -21,6 +21,7 @@
         <module>kafka</module>
         <module>batch</module>
         <module>mybatis-plus</module>
+        <module>cloud-nacos</module>
     </modules>
 
     <dependencies>

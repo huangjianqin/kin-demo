@@ -1,11 +1,14 @@
 server:
-  port: 8001
+  port: 8003
 
 spring:
   application:
-    name: diamond1
+    name: helloservice
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
 
-# actuator
 management:
   server:
     port: ${server.port}
@@ -21,13 +24,3 @@ management:
       # 显示健康具体信息  默认不会显示详细信息
       show-details: always
 
-# eureka
-eureka:
-  client:
-    service-url:
-      defaultZone: "http://localhost:8002/eureka"
-
-turbine:
-  # 监控的app唯一标识, 同时actuator也是使用默认的前缀/actuator, 因为turbine不支持自定义前缀改变的actuator
-  app-config: feign-consumer
-  cluster-name-expression: new String("default")

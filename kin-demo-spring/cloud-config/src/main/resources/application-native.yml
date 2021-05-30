@@ -14,7 +14,7 @@ spring:
         #          password:
         #          search-paths: /config
         native:
-          search-locations: /Users/hjq/jvmapps/kin-demo/config
+          search-locations: /Users/hjq/jvmapps/kin-demo/configs
 
 # actuator
 management:
