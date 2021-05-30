@@ -1,7 +1,7 @@
-package org.kin.demo.springcloud.feign;
+package feign;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.cloud.client.SpringCloudApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
@@ -9,9 +9,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @date 2020-07-19
  */
 @EnableFeignClients
-@SpringCloudApplication
-public class FeignConsumerApp {
+@SpringBootApplication
+public class FeignConsumerApplication {
     public static void main(String[] args) {
-        SpringApplication.run(FeignConsumerApp.class, args);
+        SpringApplication.run(FeignConsumerApplication.class, args);
     }
 }

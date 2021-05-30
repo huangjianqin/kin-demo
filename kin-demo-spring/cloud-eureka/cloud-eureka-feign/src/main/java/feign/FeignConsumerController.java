@@ -1,4 +1,4 @@
-package org.kin.demo.springcloud.feign;
+package feign;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,10 +18,5 @@ public class FeignConsumerController {
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String hello() {
         return feignService.hello1("kin");
-    }
-
-    @RequestMapping(value = "/helloHystrix", method = RequestMethod.GET)
-    public String helloHystrix() {
-        return feignService.helloHystrix();
     }
 }

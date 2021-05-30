@@ -16,7 +16,3 @@ management:
     health:
       # 显示健康具体信息  默认不会显示详细信息
       show-details: always
-
-feign:
-  hystrix:
-    enabled: true

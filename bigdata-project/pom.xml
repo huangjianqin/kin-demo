@@ -106,6 +106,12 @@
             <groupId>org.kin</groupId>
             <artifactId>kin-hive-core</artifactId>
             <version>${kin-bigdata.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>jdk.tools</groupId>
+                    <artifactId>jdk.tools</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -117,12 +123,6 @@
         <dependency>
             <groupId>org.kin</groupId>
             <artifactId>kin-spark-core</artifactId>
-            <version>${kin-bigdata.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.kin</groupId>
-            <artifactId>kin-framework-java</artifactId>
             <version>${kin-bigdata.version}</version>
         </dependency>
     </dependencies>

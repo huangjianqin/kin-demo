@@ -2,7 +2,7 @@ package org.kin.demo.springcloud.zookeeper;
 
 import org.kin.framework.utils.StringUtils;
 import org.springframework.boot.SpringApplication;
-import org.springframework.cloud.client.SpringCloudApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +15,7 @@ import javax.annotation.Resource;
  * @author huangjianqin
  * @date 2020-07-30
  */
-@SpringCloudApplication
+@SpringBootApplication
 @RestController
 public class HelloService {
     @Resource

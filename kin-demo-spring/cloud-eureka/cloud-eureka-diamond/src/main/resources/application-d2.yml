@@ -26,8 +26,3 @@ eureka:
   client:
     service-url:
       defaultZone: "http://localhost:8001/eureka"
-
-turbine:
-  # 监控的app唯一标识, 同时actuator也是使用默认的前缀/actuator, 因为turbine不支持自定义前缀改变的actuator
-  app-config: feign-consumer
-  cluster-name-expression: new String("default")

@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator
 import org.kin.framework.utils.JSON;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
-import org.springframework.cloud.client.SpringCloudApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @author huangjianqin
  * @date 2020-07-16
  */
-@SpringCloudApplication
+@SpringBootApplication
 @MapperScan("org.kin.demo.spring.cloud.eureka.services")
 @EnableTransactionManagement(proxyTargetClass = true)
 @EnableRedisHttpSession

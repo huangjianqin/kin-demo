@@ -1,4 +1,4 @@
-package org.kin.demo.springcloud.feign;
+package feign;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +16,4 @@ public interface FeignService {
     @GetMapping(value = "/hello1")
         //value必须加上
     String hello1(@RequestParam(value = "name") String name);
-
-    @GetMapping(value = "/helloHystrix")
-    String helloHystrix();
 }

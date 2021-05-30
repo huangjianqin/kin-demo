@@ -22,7 +22,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.home>/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home</java.home>
+        <java.home>/Library/Java/JavaVirtualMachines/jdk1.8.0_271.jdk/Contents/Home</java.home>
 
         <scala.version>2.12.10</scala.version>
         <scala.version.head>2.12</scala.version.head>
@@ -94,6 +94,24 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <dependency>
+                <groupId>io.projectreactor</groupId>
+                <!-- bom, maven的一个特性, 用于解决依赖冲突, 由依赖提供者维护版本依赖, 使用者不需要再指定版本-->
+                <artifactId>reactor-bom</artifactId>
+                <version>${reactor.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>io.rsocket</groupId>
+                <!-- bom, maven的一个特性, 用于解决依赖冲突, 由依赖提供者维护版本依赖, 使用者不需要再指定版本-->
+                <artifactId>rsocket-bom</artifactId>
+                <version>${rsocket.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -122,7 +140,6 @@
             <version>${jackson.version}</version>
         </dependency>
     </dependencies>
-
 
     <build>
         <plugins>

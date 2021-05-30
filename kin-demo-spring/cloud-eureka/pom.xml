@@ -14,14 +14,10 @@
     <modules>
         <module>cloud-eureka-diamond</module>
         <module>cloud-eureka-hello</module>
+        <module>cloud-eureka-feign</module>
     </modules>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-turbine</artifactId>
-        </dependency>
-
         <!-- org.springframework.cloud.sleuth debug级别输出-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
