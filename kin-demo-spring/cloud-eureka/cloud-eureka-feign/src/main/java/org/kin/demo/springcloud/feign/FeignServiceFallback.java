@@ -1,4 +1,4 @@
-package feign;
+package org.kin.demo.springcloud.feign;
 
 import org.springframework.stereotype.Service;
 
