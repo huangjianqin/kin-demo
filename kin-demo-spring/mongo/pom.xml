@@ -17,16 +17,17 @@
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
 
+        <!-- 如果想用reactive, 则需要引入下面两个依赖 -->
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongodb-driver-reactivestreams</artifactId>
             <version>${mongo-driver.version}</version>
         </dependency>
 
-        <!--        <dependency>-->
-        <!--            <groupId>io.projectreactor</groupId>-->
-        <!--            <artifactId>reactor-core</artifactId>-->
-        <!--        </dependency>-->
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-core</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
