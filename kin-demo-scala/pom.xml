@@ -22,7 +22,7 @@
         <dependency>
             <groupId>org.reactivemongo</groupId>
             <artifactId>reactivemongo_${scala.version.head}</artifactId>
-            <version>${reactivemongo.version}</version>
+            <version>${scala-reactivemongo.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>com.typesafe.akka</groupId>

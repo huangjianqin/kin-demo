@@ -20,6 +20,7 @@
         <module>batch</module>
         <module>mybatis-plus</module>
         <module>cloud-nacos</module>
+        <module>mongo</module>
     </modules>
 
     <dependencies>
