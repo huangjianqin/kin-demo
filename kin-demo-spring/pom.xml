@@ -22,6 +22,7 @@
         <module>cloud-nacos</module>
         <module>mongo</module>
         <module>redis</module>
+        <module>jpa</module>
     </modules>
 
     <dependencies>
