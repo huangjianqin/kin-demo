@@ -21,6 +21,7 @@
         <module>mybatis-plus</module>
         <module>cloud-nacos</module>
         <module>mongo</module>
+        <module>redis</module>
     </modules>
 
     <dependencies>
