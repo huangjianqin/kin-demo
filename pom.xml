@@ -12,6 +12,7 @@
         <module>kin-demo-scala</module>
         <module>kin-demo-java</module>
         <module>bigdata-project</module>
+        <module>kin-demo-maven-plugin-test</module>
     </modules>
     <packaging>pom</packaging>
 
