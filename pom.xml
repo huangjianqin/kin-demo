@@ -122,6 +122,12 @@
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
+
+            <dependency>
+                <groupId>org.kin</groupId>
+                <artifactId>kin-framework-dependencies</artifactId>
+                <version>${kin-framework.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

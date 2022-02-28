@@ -64,6 +64,11 @@
             <groupId>io.rsocket</groupId>
             <artifactId>rsocket-transport-netty</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>am.ik.timeflake</groupId>
+            <artifactId>timeflake4j</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
