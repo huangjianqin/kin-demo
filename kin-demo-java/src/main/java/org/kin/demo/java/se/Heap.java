@@ -10,7 +10,11 @@ import java.util.Arrays;
 @SuppressWarnings("unchecked")
 public class Heap<E extends Comparable<E>> {
     private int size;
-    private Object[] items = new Object[8];
+    private Object[] items;
+
+    public Heap(int capacity) {
+        items = new Object[capacity];
+    }
 
     public void add(E e) {
         if (size >= items.length) {
@@ -73,7 +77,7 @@ public class Heap<E extends Comparable<E>> {
     }
 
     public static void main(String[] args) {
-        Heap<Integer> heap = new Heap<>();
+        Heap<Integer> heap = new Heap<>(4);
         heap.add(1);
         heap.add(2);
         heap.add(5);
