@@ -41,5 +41,9 @@ public class HeapSort {
         int[] array = {1, 0, 2};
         sort(array);
         System.out.println(Arrays.toString(array));
+
+        array = new int[]{1, 0, 2, 4, 5, 6};
+        sort(array);
+        System.out.println(Arrays.toString(array));
     }
 }
