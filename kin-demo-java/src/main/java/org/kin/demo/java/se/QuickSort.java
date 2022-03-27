@@ -18,10 +18,11 @@ public class QuickSort {
         int index = pivot + 1;
         for (int i = index; i <= right; i++) {
             if (array[i] < array[pivot]) {
-                swap(array, i, pivot);
+                swap(array, i, index);
                 index++;
             }
         }
+        swap(array, pivot, index - 1);
         return index - 1;
     }
 
@@ -40,7 +41,7 @@ public class QuickSort {
         sort(array, 0, array.length - 1);
         System.out.println(Arrays.toString(array));
 
-        array = new int[]{1, 0, 2, 4, 5, 6};
+        array = new int[]{1, 0, 2, 4, 5, 6, 4, 3, 2, 1};
         sort(array, 0, array.length - 1);
         System.out.println(Arrays.toString(array));
     }
