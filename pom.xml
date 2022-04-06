@@ -31,8 +31,8 @@
         <kin-framework-web.version>0.1.0.0</kin-framework-web.version>
         <kin-bigdata.version>0.1.0.0</kin-bigdata.version>
 
-        <spring-cloud-release.version>2020.0.2</spring-cloud-release.version>
-        <springboot.version>2.5.0</springboot.version>
+        <spring-cloud-release.version>2020.0.4</spring-cloud-release.version>
+        <springboot.version>2.5.12</springboot.version>
         <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
         <spring-data.version>2021.0.1</spring-data.version>
 
@@ -53,9 +53,8 @@
         <qdox.version>2.0.0</qdox.version>
         <rsocket-rpc.version>0.3.0</rsocket-rpc.version>
         <reactor.version>2020.0.2</reactor.version>
-        <rsocket.version>1.1.0</rsocket.version>
+        <rsocket.version>1.1.2</rsocket.version>
         <protobuf.version>3.12.0</protobuf.version>
-        <reactor.version>2020.0.1</reactor.version>
         <spark-redis.version>2.4.2</spark-redis.version>
         <mongo-spark-connector.version>2.4.0</mongo-spark-connector.version>
         <spark-streaming-kafka.version>2.4.5</spark-streaming-kafka.version>
@@ -128,16 +127,16 @@
                 <artifactId>kin-framework-dependencies</artifactId>
                 <version>${kin-framework.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.kin</groupId>
+                <artifactId>kin-framework-web-bom</artifactId>
+                <version>${kin-framework-web.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
-        <dependency>
-            <groupId>org.kin</groupId>
-            <artifactId>kin-framework-web</artifactId>
-            <version>${kin-framework-web.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>org.kin</groupId>
             <artifactId>kin-framework-java</artifactId>
@@ -150,6 +149,7 @@
             <artifactId>jackson-core</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
