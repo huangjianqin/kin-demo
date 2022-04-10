@@ -8,8 +8,8 @@ import org.kin.demo.akka.HelloWorldMain.SayHello
  * @author huangjianqin
  * @date 2020/8/8
  */
-object HelloWorldDemo extends App with DemoParent[SayHello] {
-  override def main(args: Array[String]): Unit = {
+object HelloWorldDemo extends DemoParent[SayHello] {
+  def main(args: Array[String]): Unit = {
     system ! HelloWorldMain.SayHello("World")
     system ! HelloWorldMain.SayHello("Akka")
   }

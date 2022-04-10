@@ -125,6 +125,19 @@
             <artifactId>kin-spark-core</artifactId>
             <version>${kin-bigdata.version}</version>
         </dependency>
+
+        <!--  spark mongodb-->
+        <dependency>
+            <groupId>org.mongodb.spark</groupId>
+            <artifactId>mongo-spark-connector_${scala.version.head}</artifactId>
+        </dependency>
+
+
+        <!-- spark-redis-->
+        <dependency>
+            <groupId>com.redislabs</groupId>
+            <artifactId>spark-redis_${scala.version.head}</artifactId>
+        </dependency>
     </dependencies>
 
     <!-- mvn clean scala:compile compile package -->

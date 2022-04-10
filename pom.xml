@@ -139,6 +139,14 @@
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
+
+            <dependency>
+                <groupId>org.kin</groupId>
+                <artifactId>kin-spark-dependencies</artifactId>
+                <version>${kin-bigdata.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

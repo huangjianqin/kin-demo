@@ -21,7 +21,7 @@ object ReactiveMongoDemo {
     //find()可以设置各种限制条件，然后直至调用subscrbie才执行
     //.toFuture()可能调用了subscrbie
     val findFuture = personCollection.find().toFuture()
-    Await.result(findFuture, 10 second)
+    Await.result(findFuture, Duration.apply(10, SECONDS))
     findFuture.onComplete {
       case seq => seq.foreach(println)
     }

@@ -10,8 +10,8 @@ import scala.io.StdIn
  * @author huangjianqin
  * @date 2020/8/9
  */
-object TCPAkkaStreamDemo extends App {
-  override def main(args: Array[String]): Unit = {
+object TCPAkkaStreamDemo {
+  def main(args: Array[String]): Unit = {
     implicit val system = ActorSystem("TCP_Stream")
 
 
