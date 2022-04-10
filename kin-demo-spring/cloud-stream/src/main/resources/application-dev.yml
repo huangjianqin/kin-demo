@@ -5,9 +5,9 @@ spring:
         binder:
           brokers: "bigdata1:9092"
       binders:
-        springcloudbus:
+        input-in-0:
           destination:
             springcloudbus
-        springcloudstream:
+        output:
           destination:
             springcloudbus
