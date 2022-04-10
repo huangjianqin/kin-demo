@@ -30,6 +30,12 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>${mybatis-plus.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.kin</groupId>
+            <artifactId>kin-framework-mybatis</artifactId>
+            <version>${kin-framework-mybatis.version}</version>
+        </dependency>
     </dependencies>
 
 </project>
