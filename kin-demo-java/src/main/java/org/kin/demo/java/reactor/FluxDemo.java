@@ -1,9 +1,11 @@
 package org.kin.demo.java.reactor;
 
+import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 import reactor.core.publisher.BaseSubscriber;
 import reactor.core.publisher.Flux;
 
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -18,24 +20,56 @@ public class FluxDemo {
 
     public static void demo1() {
         Flux<Integer> source = Flux.range(1, 20);
-        source.subscribe(
-                System.out::println,
-                System.err::println,
-                () -> System.out.println("done"),
+        source.subscribe(new Subscriber<Integer>() {
+            @Override
+            public void onSubscribe(Subscription subscription) {
                 //只请求10个
-                sub -> sub.request(10));
+                subscription.request(10);
+            }
+
+            @Override
+            public void onNext(Integer integer) {
+                System.out.println(integer);
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+                throwable.printStackTrace();
+            }
+
+            @Override
+            public void onComplete() {
+                System.out.println("done");
+            }
+        });
     }
 
     public static void demo2() {
         Flux<Integer> source = Flux.range(1, 20);
 
-        source.buffer(10) //缓存10次request,并组成一个list, 然后再执行subscribe操作
-                .subscribe(
-                        System.out::println,
-                        System.err::println,
-                        () -> System.out.println("done"),
-                        //只请求10个
-                        sub -> sub.request(10));
+        //缓存10次request,并组成一个list, 然后再执行subscribe操作
+        source.buffer(10).subscribe(new Subscriber<List<Integer>>() {
+            @Override
+            public void onSubscribe(Subscription subscription) {
+                //只请求10个
+                subscription.request(10);
+            }
+
+            @Override
+            public void onNext(List<Integer> ints) {
+                System.out.println(ints);
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+                throwable.printStackTrace();
+            }
+
+            @Override
+            public void onComplete() {
+                System.out.println("done");
+            }
+        });
     }
 
     public static void demo3() {
