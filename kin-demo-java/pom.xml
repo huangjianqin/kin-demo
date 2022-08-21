@@ -17,11 +17,13 @@
             <artifactId>freemarker</artifactId>
             <version>${freemarker.version}</version>
         </dependency>
+
         <dependency>
             <groupId>com.thoughtworks.qdox</groupId>
             <artifactId>qdox</artifactId>
             <version>${qdox.version}</version>
         </dependency>
+
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
@@ -33,11 +35,6 @@
         <dependency>
             <groupId>io.projectreactor.netty</groupId>
             <artifactId>reactor-netty-http</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.rabbitmq</groupId>
-            <artifactId>amqp-client</artifactId>
-            <version>${rabbitmq.version}</version>
         </dependency>
 
         <!-- protobuf -->
