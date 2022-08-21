@@ -1,4 +1,4 @@
-package org.kin.demo.java.reactor.netty;
+package org.kin.demo.reactor.netty;
 
 import reactor.core.Disposable;
 import reactor.core.publisher.Flux;

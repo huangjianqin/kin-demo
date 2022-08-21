@@ -1,4 +1,4 @@
-package org.kin.demo.java.reactor;
+package org.kin.demo.reactor;
 
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;

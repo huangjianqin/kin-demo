@@ -13,6 +13,7 @@
         <module>kin-demo-java</module>
         <module>bigdata-project</module>
         <module>kin-demo-maven-plugin-test</module>
+        <module>kin-demo-reactor</module>
     </modules>
     <packaging>pom</packaging>
 
