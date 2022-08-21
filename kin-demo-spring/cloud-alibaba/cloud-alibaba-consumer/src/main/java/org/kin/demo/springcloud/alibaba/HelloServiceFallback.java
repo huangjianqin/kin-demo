@@ -1,4 +1,4 @@
-package org.kin.demo.springcloud.nacos;
+package org.kin.demo.springcloud.alibaba;
 
 import org.springframework.stereotype.Service;
 

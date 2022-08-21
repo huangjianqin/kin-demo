@@ -1,4 +1,4 @@
-package org.kin.demo.springcloud.nacos;
+package org.kin.demo.springcloud.alibaba;
 
 import org.kin.framework.utils.StringUtils;
 import org.slf4j.Logger;

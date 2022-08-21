@@ -18,7 +18,7 @@
         <module>kafka</module>
         <module>batch</module>
         <module>mybatis-plus</module>
-        <module>cloud-nacos</module>
+        <module>cloud-alibaba</module>
         <module>mongo</module>
         <module>redis</module>
         <module>jpa</module>

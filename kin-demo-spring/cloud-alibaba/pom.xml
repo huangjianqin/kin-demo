@@ -8,11 +8,11 @@
         <version>0.1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>cloud-nacos</artifactId>
+    <artifactId>cloud-alibaba</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>cloud-nacos-provider</module>
-        <module>cloud-nacos-consumer</module>
+        <module>cloud-alibaba-provider</module>
+        <module>cloud-alibaba-consumer</module>
     </modules>
 
     <dependencies>
