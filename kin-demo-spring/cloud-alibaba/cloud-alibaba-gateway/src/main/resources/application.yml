@@ -35,12 +35,21 @@ spring:
           predicates:
             - Path=/consumer/**
             - Method=GET
+            - Weight=group1,2
           # 过滤器（filters：过滤器，过滤规则）
           filters:
             ## 添加指定参数
             #            - AddRequestParameter=age, three
             # 去掉第一个path
             - StripPrefix=1
+    #        - id: baidu_route
+    #          # 目标服务地址（uri：地址，请求转发后的地址）
+    #          uri: https://www.baidu.com/
+    #          # 路由条件（predicates：断言，匹配 HTTP 请求内容）
+    #          predicates:
+    #            - Path=/consumer/**
+    #            - Method=GET
+    #            - Weight=group1,8
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
