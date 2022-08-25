@@ -7,7 +7,6 @@ spring:
         server-addr: 127.0.0.1:8848
     sentinel:
       transport:
-        port: 8859
         dashboard: 127.0.0.1:8858
 # 整合feign后, sentinel资源名为httpmethod:protocol://requesturl
 feign:
