@@ -1,5 +1,7 @@
-package org.kin.demo.springcloud.alibaba;
+package org.kin.demo.springcloud.alibaba.provider;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import org.kin.framework.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,8 +35,13 @@ public class HelloController {
     private int b;
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    @SentinelResource(value = "/hello", blockHandler = "helloBlockHandler")
     public String hello() {
         return StringUtils.mkString(discoveryClient.getServices());
+    }
+
+    public String helloBlockHandler(BlockException e) {
+        return "hello block";
     }
 
     @RequestMapping(value = "/config", method = RequestMethod.GET)

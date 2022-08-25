@@ -13,6 +13,7 @@
     <modules>
         <module>cloud-alibaba-provider</module>
         <module>cloud-alibaba-consumer</module>
+        <module>cloud-alibaba-gateway</module>
     </modules>
 
     <dependencies>

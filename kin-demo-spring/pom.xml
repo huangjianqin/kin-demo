@@ -13,7 +13,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>cloud-stream</module>
-        <module>cloud-gateway</module>
         <module>cloud-zookeeper</module>
         <module>kafka</module>
         <module>batch</module>

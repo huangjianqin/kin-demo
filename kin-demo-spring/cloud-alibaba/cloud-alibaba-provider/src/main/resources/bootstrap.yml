@@ -1,6 +1,6 @@
 spring:
   application:
-    name: helloservice
+    name: alibaba-provider
   #默认dataid=${cloud.nacos.config.prefix}-${spring.profiles.active}.${cloud.nacos.config.extension}
   #${cloud.nacos.config.prefix}默认为是${spring.application.name}
   #如果${spring.profiles.active}为空, 则-${spring.profiles.active}都会没有

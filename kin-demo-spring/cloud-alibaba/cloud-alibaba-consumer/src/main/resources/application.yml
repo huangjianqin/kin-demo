@@ -1,6 +1,6 @@
 spring:
   application:
-    name: helloservice-consumer
+    name: alibaba-consumer
   cloud:
     nacos:
       discovery:
@@ -15,7 +15,7 @@ feign:
     enabled: true
 
 server:
-  port: 8006
+  port: 8004
 
 # actuator
 management:

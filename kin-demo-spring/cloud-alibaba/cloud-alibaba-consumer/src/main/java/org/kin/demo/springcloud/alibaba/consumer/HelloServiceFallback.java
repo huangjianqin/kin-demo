@@ -1,4 +1,4 @@
-package org.kin.demo.springcloud.alibaba;
+package org.kin.demo.springcloud.alibaba.consumer;
 
 import org.springframework.stereotype.Service;
 
@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 public class HelloServiceFallback implements HelloService {
     @Override
     public String hello() {
-        return "local hello";
+        return "local hello()";
     }
 
     @Override
     public String config() {
-        return "local config";
+        return "local config()";
     }
 }
