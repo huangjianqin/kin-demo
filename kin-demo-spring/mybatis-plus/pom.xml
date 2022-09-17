@@ -36,6 +36,13 @@
             <artifactId>kin-framework-mybatis</artifactId>
             <version>${kin-framework-mybatis.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+            <version>${mybatis-plus.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 </project>
