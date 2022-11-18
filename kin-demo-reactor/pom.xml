@@ -24,29 +24,10 @@
             <artifactId>reactor-netty-http</artifactId>
         </dependency>
 
-        <!-- protobuf -->
         <dependency>
-            <groupId>com.google.protobuf</groupId>
-            <artifactId>protobuf-java</artifactId>
-            <version>${protobuf.version}</version>
-        </dependency>
-
-        <!-- rsocket rpc -->
-        <dependency>
-            <groupId>io.rsocket.rpc</groupId>
-            <artifactId>rsocket-rpc-core</artifactId>
-            <version>${rsocket-rpc.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>io.rsocket.rpc</groupId>
-                    <artifactId>rsocket-rpc-protobuf</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>io.rsocket</groupId>
-            <artifactId>rsocket-transport-netty</artifactId>
+            <groupId>dev.miku</groupId>
+            <artifactId>r2dbc-mysql</artifactId>
+            <version>${r2dbc-mysql.version}</version>
         </dependency>
     </dependencies>
 

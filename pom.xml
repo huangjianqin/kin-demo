@@ -71,6 +71,7 @@
         <opencsv.version>3.8</opencsv.version>
         <curator.version>5.1.0</curator.version>
         <jyaml.version>1.3</jyaml.version>
+        <r2dbc-mysql.version>0.8.2.RELEASE</r2dbc-mysql.version>
     </properties>
 
     <dependencyManagement>
