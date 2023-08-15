@@ -15,7 +15,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <classgraph.version>4.8.98</classgraph.version>
-        <maven.version>3.6.3</maven.version>
+        <maven.version>3.8.1</maven.version>
         <maven-plugin-annotations.version>3.6.2</maven-plugin-annotations.version>
         <takari-plugin-testing.version>3.0.0</takari-plugin-testing.version>
         <common-io.version>1.3.2</common-io.version>
