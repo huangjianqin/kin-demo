@@ -21,6 +21,7 @@
         <module>mongo</module>
         <module>redis</module>
         <module>jpa</module>
+        <module>ingress</module>
     </modules>
 
     <dependencies>
@@ -46,6 +47,26 @@
                     <execution>
                         <goals>
                         </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- maven处理依赖插件, -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <!-- 复制项目依赖到指定路径-->
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

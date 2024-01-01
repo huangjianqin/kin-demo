@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ingress-service
+  name: ingress-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ingress-service
+  template:
+    metadata:
+      labels:
+        app: ingress-service
+    spec:
+      containers:
+        - image: ingress-service:latest
+          name: ingress-service
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: HOST_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: default
+  labels:
+    app: ingress-service
+  name: ingress-service
+  annotations:
+    name: ingress-service
+spec:
+  type: ClusterIP
+  ports:
+    - port: 10000
+      targetPort: 10000
+      protocol: TCP
+  selector:
+    app: ingress-service

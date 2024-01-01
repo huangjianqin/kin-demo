@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.kin</groupId>
+        <artifactId>ingress</artifactId>
+        <version>0.1.0.0</version>
+    </parent>
+
+    <artifactId>ingress-gateway</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-loadbalancer</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- 利用assembly.xml打包, 可以根据配置指定打包结构,
+                 特别适用于spring boot项目, 有些资源配置放在resources下面, 通过file协议会读取不到(因为在jar里面了)
+                 这里面需要将部分文件放到jar外包, 并在启动时, 将其包在classpath里面 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.6.0</version>
+                <executions>
+                    <execution>
+                        <id>packetToTar</id>
+                        <goals>
+                            <!-- 会把依赖直接写进另外一个单独的jar包-->
+                            <goal>single</goal>
+                        </goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- 去掉AssemblyId(相当于版本号) -->
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <!-- 最终输出的文件名 -->
+                    <finalName>${project.name}</finalName>
+                    <descriptors>
+                        <!-- 相当于${project.basedir}/assembly/assembly.xml -->
+                        <descriptor>../build/assembly.xml</descriptor>
+                    </descriptors>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

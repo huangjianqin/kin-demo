@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ingress-eureka
+  name: ingress-eureka
+spec:
+  selector:
+    matchLabels:
+      app: ingress-eureka
+  template:
+    metadata:
+      labels:
+        app: ingress-eureka
+    spec:
+      containers:
+        - image: ingress-eureka:latest
+          name: ingress-eureka
+          imagePullPolicy: IfNotPresent
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: default
+  labels:
+    app: ingress-eureka
+  name: ingress-eureka
+  annotations:
+    name: ingress-eureka
+spec:
+  type: ClusterIP
+  ports:
+    - port: 9999
+      targetPort: 9999
+      protocol: TCP
+  selector:
+    app: ingress-eureka

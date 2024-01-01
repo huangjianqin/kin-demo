@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ingress-gateway
+  name: ingress-gateway
+spec:
+  selector:
+    matchLabels:
+      app: ingress-gateway
+  template:
+    metadata:
+      labels:
+        app: ingress-gateway
+    spec:
+      containers:
+        - image: ingress-gateway:latest
+          name: ingress-gateway
+          imagePullPolicy: IfNotPresent
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: default
+  labels:
+    app: ingress-gateway
+  name: ingress-gateway
+  annotations:
+    name: ingress-gateway
+spec:
+  type: ClusterIP
+  ports:
+    - port: 9888
+      targetPort: 9888
+      protocol: TCP
+  selector:
+    app: ingress-gateway
